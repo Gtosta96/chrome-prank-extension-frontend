@@ -12,13 +12,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.fb.group({
       id: [''],
     });
   }
 
-  onSubmit(values) {
+  onSubmit(values: any): void {
     this.router.navigate(['/home', values.id]);
   }
 }
