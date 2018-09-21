@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WsMessagesService } from './ws-messages.service';
+import { ApiService } from './api.service';
 
-describe('WsMessagesService', () => {
+describe('ApiService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: WsMessagesService = TestBed.get(WsMessagesService);
+    const service: ApiService = TestBed.get(ApiService);
     expect(service).toBeTruthy();
   });
 });

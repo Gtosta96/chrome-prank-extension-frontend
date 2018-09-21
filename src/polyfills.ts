@@ -73,8 +73,10 @@ import 'core-js/es7/reflect';
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
-
-
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+ // Add global to window, assigning the value of window itself.
+ // https://github.com/socketio/socket.io-client/issues/1166#issuecomment-386195105
+(<any> window).global = window;
