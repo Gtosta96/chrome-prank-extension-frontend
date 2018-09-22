@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 
-import { MatSlideToggleModule } from '@angular/material';
-
 import { SharedModule } from '../shared/shared.module';
 
 import { HomeComponent } from './home.component';
+import { PrankComponent } from './prank/prank.component';
 
 @NgModule({
   imports: [
     SharedModule,
-    MatSlideToggleModule,
   ],
   declarations: [
     HomeComponent,
+    PrankComponent,
   ],
 })
 export class HomeModule { }

@@ -1,0 +1,9 @@
+/* card */
+.prank-card-container {
+  width: 60vw;
+}
+
+/* form */
+.prank-form > .field {
+  width: 100%;
+}

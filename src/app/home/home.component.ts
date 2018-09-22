@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
       this.id = params.id;
       
       this.startWS(this.id);
-      this.api.getById(this.id).subscribe(joke => {
-        console.log(joke);
+      this.api.getById(this.id).subscribe(prank => {
+        console.log(prank);
       });
     });
   }
