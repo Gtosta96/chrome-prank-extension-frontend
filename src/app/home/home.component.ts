@@ -11,6 +11,7 @@ import { ApiService } from '../core/api/api.service';
 })
 export class HomeComponent implements OnInit {
   id: string;
+  prank: object;
 
   constructor(private route: ActivatedRoute, private ws: WsService, private api: ApiService) { }
 
@@ -19,9 +20,7 @@ export class HomeComponent implements OnInit {
       this.id = params.id;
       
       this.startWS(this.id);
-      this.api.getById(this.id).subscribe(prank => {
-        console.log(prank);
-      });
+      this.api.getById(this.id).subscribe(prank => this.prank = prank);
     });
   }
 

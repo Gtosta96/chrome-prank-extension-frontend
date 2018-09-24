@@ -12,4 +12,8 @@ export class ApiService {
   getById(id: string): Observable<any> {
     return this.http.get(`http://localhost:3000/pranks/${id}`);
   }
+
+  update(id: string, body: any): Observable<any> {
+    return this.http.put(`http://localhost:3000/pranks/${id}`, body);
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import * as Prism from 'prismjs';
+import { ApiService } from '../../core/api/api.service';
 
 @Component({
   selector: 'app-prank',
@@ -11,18 +11,26 @@ import * as Prism from 'prismjs';
 })
 export class PrankComponent implements OnInit {
   @Input() id: string;
+  @Input() prank: any;
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private api: ApiService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      id: [''],
-      html: [''],
-      css: [''],
+      id: [this.prank.id],
+      html: [this.prank.html],
+      css: [this.prank.css],
       url: [''],
-      active: [''],
+      active: [!this.prank.disabled],
+    });
+  }
+
+  onSubmit(values: any): void {
+    console.log(values);
+    this.api.update(this.id, values).subscribe((response) => {
+      console.log(response);
     });
   }
 }
