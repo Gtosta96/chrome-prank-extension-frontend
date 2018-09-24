@@ -1,38 +1,22 @@
 <div class="prank-card-container">
-  <mat-card>
+  <form class="prank-form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
+    <input type="hidden" [formControlName]="'id'" [value]="id" />
 
-    <mat-card-header>
-      <mat-card-title># {{ id }}</mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
-      <form class="prank-form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
-
-        <input type="hidden" [formControlName]="'id'" [value]="id"/>
-
-        <mat-form-field class="field">
-          <textarea placeholder="HTML" matInput [formControlName]="'html'"></textarea>
-        </mat-form-field>
+    <div class="editors">
+      <textarea class="area" placeholder="HTML" matInput [formControlName]="'html'"></textarea>
       
-        <mat-form-field class="field">
-          <textarea placeholder="CSS" matInput [formControlName]="'css'"></textarea>
-        </mat-form-field>
+      <textarea class="area" placeholder="CSS" matInput [formControlName]="'css'"></textarea>
+      
+      <app-chips class="chips" [chips]="['a', 'b', 'c']" [formControlName]="'url'"></app-chips>
+    </div>
 
-        <mat-form-field class="field">
-          <input type="url" placeholder="URL" matInput [formControlName]="'url'"/>
-        </mat-form-field>
-
-        <app-chips class="field" [chips]="['a', 'b', 'c']"></app-chips>
-
-        <mat-slide-toggle [formControlName]="'active'">Active</mat-slide-toggle>
-
-      </form>
-    </mat-card-content>
-
-    <mat-card-actions>
-      <button mat-button>Cancel</button>
-      <button mat-button>Save</button>
-    </mat-card-actions>
-
-  </mat-card>
+    <div class="preview-container">
+      <div class="controls">
+        <mat-slide-toggle class="control" [formControlName]="'active'">Active</mat-slide-toggle>
+        <button class="control -right" mat-button>Save</button>
+      </div>
+  
+      <div class="preview"></div>
+    </div>
+  </form>
 </div>

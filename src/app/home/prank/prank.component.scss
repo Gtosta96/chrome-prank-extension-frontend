@@ -1,0 +1,44 @@
+/* card-container */
+.prank-card-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* form */
+.prank-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  & > .editors {
+    width: 50%;
+    height: 100%;
+
+    & > .area {
+      width: 100%;
+      height: 40%;
+      resize: none;
+    }
+
+    & > .chips {
+      height: 20%;
+      overflow-x: auto;
+    }
+  }
+
+  .preview-container {
+    width: 50%;
+    height: 10%;
+
+    & > .controls {
+      display: flex;
+
+      & > .control.-right { margin-left: auto }
+    }
+
+    &.preview {
+      height: 90%;
+    }
+  }
+}

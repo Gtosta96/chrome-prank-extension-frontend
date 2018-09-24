@@ -6,7 +6,7 @@ import { MatChipInputEvent } from '@angular/material';
 @Component({
   selector: 'app-chips',
   templateUrl: './chips.component.html',
-  styleUrls: ['./chips.component.css'],
+  styleUrls: ['./chips.component.scss'],
 })
 export class ChipsComponent implements OnInit {
   @Input() class: string;
