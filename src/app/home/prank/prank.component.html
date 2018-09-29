@@ -6,17 +6,22 @@
       <textarea class="area" placeholder="HTML" matInput [formControlName]="'html'"></textarea>
       
       <textarea class="area" placeholder="CSS" matInput [formControlName]="'css'"></textarea>
-      
-      <app-chips class="chips" [chips]="['a', 'b', 'c']" [formControlName]="'url'"></app-chips>
     </div>
 
     <div class="preview-container">
       <div class="controls">
-        <mat-slide-toggle class="control" [formControlName]="'active'">Active</mat-slide-toggle>
-        <button type="submit" class="control -right" mat-button>Save</button>
+        <mat-checkbox class="control" [formControlName]="'urlYoutube'">Youtube</mat-checkbox>
+        <mat-checkbox class="control" [formControlName]="'urlFacebook'">Facebook</mat-checkbox>
+        <mat-checkbox class="control" [formControlName]="'urlGoogle'">Google</mat-checkbox>
+        <mat-checkbox class="control" [formControlName]="'urlWhatsApp'">WhatsApp</mat-checkbox>
+
+        <mat-slide-toggle class="control -divisor" [formControlName]="'active'">Active</mat-slide-toggle>
+        <button type="submit" class="control -right" mat-stroked-button color="warn">Save</button>
       </div>
   
-      <div class="preview"></div>
+      <div class="preview">
+        <iframe class="iframe" #iframe></iframe>
+      </div>
     </div>
   </form>
 </div>

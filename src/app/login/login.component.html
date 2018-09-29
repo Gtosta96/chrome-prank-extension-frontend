@@ -1,6 +1,15 @@
-<section>
-  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
-    <input type="text" placeholder="id" [formControlName]="'id'">
-    <button type="submit">Go</button>
-  </form>
-</section>
+<div class="login-card-container">
+  <mat-card class="card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" novalidate>
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Victim ID" [formControlName]="'id'">
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button mat-raised-button color="warn" type="submit">Let's ROCK!</button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card>
+</div>

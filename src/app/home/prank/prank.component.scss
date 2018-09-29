@@ -1,8 +1,8 @@
 /* card-container */
 .prank-card-container {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: calc(100% - 64px); // 64px === topbar header;
+  background-color: #fff;
 }
 
 /* form */
@@ -10,35 +10,43 @@
   width: 100%;
   height: 100%;
   display: flex;
+}
 
-  & > .editors {
-    width: 50%;
-    height: 100%;
+.editors {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
 
-    & > .area {
-      width: 100%;
-      height: 40%;
-      resize: none;
-    }
+.area {
+  flex: 1;
+  resize: none;
+  padding: 20px;
+  border: 1px solid #d3d3d3;
+  
+}
 
-    & > .chips {
-      height: 20%;
-      overflow-x: auto;
-    }
+.preview-container {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+
+  & > .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+
+    & > .control { margin-left: 10px; }
+    & > .control.-divisor { border-left: 1px solid #ccc; padding-left: 10px; }
+    & > .control.-right { margin-left: auto }
   }
 
-  .preview-container {
-    width: 50%;
-    height: 10%;
-
-    & > .controls {
-      display: flex;
-
-      & > .control.-right { margin-left: auto }
-    }
-
-    &.preview {
-      height: 90%;
-    }
+  & > .preview, .iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 }

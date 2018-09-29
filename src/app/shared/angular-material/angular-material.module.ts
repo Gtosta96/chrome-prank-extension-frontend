@@ -2,8 +2,18 @@ import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// tslint:disable-next-line:max-line-length
-import { MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatChipsModule, MatIconModule, MatSlideToggleModule, MatButtonModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatChipsModule,
+  MatIconModule,
+  MatSlideToggleModule,
+  MatButtonModule,
+  MatCheckboxModule,
+  MatSnackBarModule,
+} from '@angular/material';
 
 import { ChipsComponent } from './chips/chips.component';
 
@@ -19,6 +29,8 @@ import { ChipsComponent } from './chips/chips.component';
     MatIconModule,
     MatSlideToggleModule,
     MatButtonModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
   ],
   declarations: [
     ChipsComponent,
@@ -34,6 +46,7 @@ import { ChipsComponent } from './chips/chips.component';
     MatIconModule,
     MatSlideToggleModule,
     MatButtonModule,
+    MatCheckboxModule,
 
     ChipsComponent,
   ],
