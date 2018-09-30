@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { ApiService } from '../../core/api/api.service';
+import { WsService } from '../../core/ws/ws.service';
 
 @Component({
   selector: 'app-prank',
@@ -13,36 +13,42 @@ import { ApiService } from '../../core/api/api.service';
 export class PrankComponent implements OnInit {
   @Input() id: string;
   @Input() prank: any;
+  @Input() ws: WsService;
   
   @ViewChild('iframe') iframe: any;
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private api: ApiService, private snackBar: MatSnackBar) { }
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      id: [this.prank.id],
-      html: [this.prank.html],
-      css: [this.prank.css],
-      urlYoutube: [this.prank.urls.includes('youtube')],
-      urlFacebook: [this.prank.urls.includes('facebook')],
-      urlGoogle: [this.prank.urls.includes('google')],
-      urlWhatsApp: [this.prank.urls.includes('whatsapp')],
-      active: [!this.prank.disabled],
-    });
-
-    this.render(this.prank);
+    this.update(this.prank);
     this.listenChanges();
   }
 
-  onSubmit(values: any): void {
-    this.api.update(this.id, values).subscribe(() => {
-      this.snackBar.open('Prank Saved Successfully', 'Close!', { duration: 3000, verticalPosition: 'top' });
+  update(prank: any): void {
+    this.form = this.fb.group({
+      id: [prank.id],
+      html: [prank.html],
+      css: [prank.css],
+      urlYoutube: [prank.urls.includes('youtube')],
+      urlFacebook: [prank.urls.includes('facebook')],
+      urlGoogle: [prank.urls.includes('google')],
+      urlWhatsApp: [prank.urls.includes('whatsapp')],
+      enabled: [prank.enabled],
     });
+
+    this.render(this.prank);
+  }
+
+  onSubmit(values: any): void {
+    this.ws.emit('update', values);
+    this.snackBar.open('Prank Saved Successfully', 'Close!', { duration: 3000, verticalPosition: 'top' });
   }
 
   listenChanges(): void {
+    this.ws.on('update').subscribe((values) => this.update(values));
+
     this.form.valueChanges.subscribe((values) => this.render(values));
   }
 
