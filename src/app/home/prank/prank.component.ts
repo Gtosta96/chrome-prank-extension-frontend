@@ -41,11 +41,6 @@ export class PrankComponent implements OnInit {
     this.render(this.prank);
   }
 
-  onSubmit(values: any): void {
-    this.ws.emit('update', values);
-    this.snackBar.open('Prank Saved Successfully', 'Close!', { duration: 3000, verticalPosition: 'top' });
-  }
-
   listenChanges(): void {
     this.ws.on('update').subscribe((values) => this.update(values));
 
@@ -63,5 +58,23 @@ export class PrankComponent implements OnInit {
     `);
 
     iframe.close();
+  }
+
+  onSubmit(values: any): void {
+    const parsedValues = this.valuesHandler(values);
+
+    this.ws.emit('update', parsedValues);
+    this.snackBar.open('Prank Saved Successfully', 'Close!', { duration: 3000, verticalPosition: 'top' });
+  }
+
+  valuesHandler(values: any): any {
+    const urls = [
+      values.urlFacebook ? 'facebook' : null,
+      values.urlGoogle ? 'google' : null,
+      values.urlWhatsApp ? 'whatsapp' : null,
+      values.urlYoutube ? 'youtube' : null,
+    ].filter(url => url);
+
+    return { ...values, urls };
   }
 }
